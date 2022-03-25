@@ -1,0 +1,12 @@
+spring:
+    activemq:
+        broker-url: failover:tcp://localhost:61616
+        in-memory: true
+        pool:
+            enabled: false
+        packages:
+            trust-all: true
+        user: admin
+        password: admin
+server: 
+    port: 9011
