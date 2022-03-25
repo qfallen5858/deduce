@@ -8,5 +8,7 @@ spring:
             trust-all: true
         user: admin
         password: admin
+        queue-name: active.queue
+        topic-name: active.topic.name.model
 server: 
     port: 9011
