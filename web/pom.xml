@@ -11,10 +11,35 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>web</name>
     <description>Demo project for Spring Boot</description>
-    <!-- <properties>
-        <java.version>8</java.version>
-    </properties> -->
+    <properties>
+        <swagger.version>2.9.2</swagger.version>
+    </properties>
     <dependencies>
+		<dependency>
+			<groupId>com.kanq.deduce</groupId>
+			<artifactId>common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+    	<dependency>
+    		<groupId>com.baomidou</groupId>
+    		<artifactId>mybatis-plus-boot-starter</artifactId>
+    		<version>${mybatis-plus.version}</version>
+    	</dependency>
+
+
+    	<dependency>
+    		<groupId>io.springfox</groupId>
+    		<artifactId>springfox-swagger-ui</artifactId>
+    		<version>${swagger.version}</version>
+    	</dependency>
+
+
+    	<dependency>
+    		<groupId>io.springfox</groupId>
+    		<artifactId>springfox-swagger2</artifactId>
+    		<version>${swagger.version}</version>
+    	</dependency>
+
 
     	<dependency>
     		<groupId>com.alibaba</groupId>
@@ -55,11 +80,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

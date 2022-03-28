@@ -4,14 +4,22 @@ import javax.jms.Destination;
 import javax.jms.Queue;
 import javax.jms.Topic;
 
+import com.kanq.deduce.web.service.PlayService;
 import com.kanq.deduce.web.vo.ApiResult;
+import com.kanq.deduce.web.vo.PlayVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
+@Api(tags = "指令模块")
+@RequestMapping("/command")
 public class CommandController {
     @Autowired
     private JmsMessagingTemplate jmsMessageTemplate;
@@ -22,9 +30,14 @@ public class CommandController {
     @Autowired
     private Topic topic;
 
-    @RequestMapping("/begin")
-    public ApiResult begin(){
-        return ApiResult.SUCCESS;
+    @Autowired
+    private PlayService playService;
+
+    @ApiOperation("推演启动")
+    @RequestMapping("/{playId}/begin")
+    public ApiResult<PlayVO> begin(@PathVariable Integer playId){
+        return new ApiResult<>(playService.beginPlay(playId));
+        // return ApiResult.SUCCESS;
     }
 
     private void sendMessage(Destination destination, final String message){

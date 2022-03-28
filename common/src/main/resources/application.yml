@@ -1,0 +1,9 @@
+mybatis-plus:
+    global-config: 
+        db-config: 
+            id-type: auto
+            logic-not-delete-value: 0
+            logic-delete-value: 1
+    type-enums-package: com.kanq.deduce.common.enums
+    configuration:
+        default-enum-type-handler: com.baomidou.mybatisplus.extension.handlers.MybatisEnumTypeHandler

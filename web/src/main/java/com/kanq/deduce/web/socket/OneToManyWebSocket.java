@@ -27,7 +27,7 @@ public class OneToManyWebSocket {
     @OnOpen
     public void onOpen(Session session) {
         onlineCount.incrementAndGet();
-        clients.put(session.getId(), session)
+        clients.put(session.getId(), session);
         log.info("有新连接加入：{}，当前在线人数为：{}", session.getId(), onlineCount.get());
     }
 
