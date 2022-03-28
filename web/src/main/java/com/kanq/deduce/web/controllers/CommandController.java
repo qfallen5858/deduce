@@ -11,6 +11,7 @@ import com.kanq.deduce.web.vo.PlayVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,10 +35,21 @@ public class CommandController {
     private PlayService playService;
 
     @ApiOperation("推演启动")
-    @RequestMapping("/{playId}/begin")
+    @PostMapping("/{playId}/begin")
     public ApiResult<PlayVO> begin(@PathVariable Integer playId){
         return new ApiResult<>(playService.beginPlay(playId));
-        // return ApiResult.SUCCESS;
+    }
+
+    @ApiOperation("推演暂停")
+    @PostMapping("/{playId}/pause")
+    public ApiResult<PlayVO> pause(@PathVariable Integer playId){
+        return new ApiResult<>(playService.pausePlay(playId));
+    }
+
+    @ApiOperation("推演结束")
+    @PostMapping("/{playId}/stop")
+    public ApiResult<PlayVO> stop(@PathVariable Integer playId){
+        return new ApiResult<>(playService.stopPlay(playId));
     }
 
     private void sendMessage(Destination destination, final String message){

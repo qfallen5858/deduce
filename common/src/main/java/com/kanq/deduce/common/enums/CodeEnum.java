@@ -1,4 +1,4 @@
-package com.kanq.deduce.web.enums;
+package com.kanq.deduce.common.enums;
 
 import lombok.Getter;
 
@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum CodeEnum {
     
     SUCCESS(200, "操作成功"),
-    FAILED(500, "系统异常");
+    FAILED(500, "系统异常"),
+    NOT_FOUND(404, "找不到指定对象");
 
     private Integer code;
 

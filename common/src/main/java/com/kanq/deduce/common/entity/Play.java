@@ -17,6 +17,7 @@ public class Play {
     private String name;
 
     private PlayStateEnum state;
+    // private Integer state;
     
     private Date createTime;
 

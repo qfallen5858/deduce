@@ -2,7 +2,7 @@ package com.kanq.deduce.web.vo;
 
 import java.io.Serializable;
 
-import com.kanq.deduce.web.enums.CodeEnum;
+import com.kanq.deduce.common.enums.CodeEnum;
 
 import lombok.Data;
 
@@ -13,6 +13,7 @@ public class ApiResult<T> implements Serializable{
     private T data;
 
     public static final ApiResult SUCCESS = new ApiResult(true);
+    public static final ApiResult FAILED = new ApiResult(false);
 
     public ApiResult(T data){
         this.code = CodeEnum.SUCCESS.getCode();
