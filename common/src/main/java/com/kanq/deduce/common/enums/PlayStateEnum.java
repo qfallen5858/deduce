@@ -1,11 +1,9 @@
 package com.kanq.deduce.common.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
-import com.baomidou.mybatisplus.annotation.IEnum;
-
 import lombok.Getter;
 
-// @Getter
+@Getter
 public enum PlayStateEnum {
     NORMAL(0, "默认"),
     PLAYING(1, "进行中"),
@@ -22,12 +20,12 @@ public enum PlayStateEnum {
 
     // @Override
     
-    public Integer getValue() {
-        return value;
-    }
+    // public Integer getValue() {
+    //     return value;
+    // }
 
-    public String getName(){
-        return name;
-    }
+    // public String getName(){
+    //     return name;
+    // }
     
 }
