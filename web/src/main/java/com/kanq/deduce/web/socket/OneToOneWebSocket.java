@@ -72,4 +72,8 @@ public class OneToOneWebSocket {
             log.error("服务端发送消息给客户端失败：{}", e);
         }
     }
+
+    public static void sendInfo(String message){
+      
+    }
 }

@@ -5,6 +5,7 @@ import javax.jms.Queue;
 import javax.jms.Topic;
 
 import com.kanq.deduce.web.service.PlayService;
+import com.kanq.deduce.web.socket.OneToManyWebSocket;
 import com.kanq.deduce.web.vo.ApiResult;
 import com.kanq.deduce.web.vo.PlayVO;
 
@@ -66,6 +67,14 @@ public class CommandController {
     public ApiResult sendTopic(){
         this.sendMessage(this.topic, "test");
         return ApiResult.SUCCESS;
+    }
+
+    
+
+    @RequestMapping("/message")
+    public ApiResult send(){
+      OneToManyWebSocket.sendAll("hellow");
+      return ApiResult.SUCCESS;
     }
 
 }
