@@ -76,4 +76,13 @@ public class OneToManyWebSocket {
       
     }
 
+    public static void sendBodyTest(Object object){
+      for(Map.Entry<String,Session> sessionEntry : clients.entrySet()){
+        Session toSession = sessionEntry.getValue();
+        // log.info("服务端给客户端[()]发送消息：{}", toSession.getId(), message);
+        toSession.getAsyncRemote().sendObject(object);
+        // toSession.getAsyncRemote().sendObject(arg0));
+      }
+    }
+
 }

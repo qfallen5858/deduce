@@ -1,5 +1,7 @@
 package com.kanq.deduce.web.controllers;
 
+import java.util.Date;
+
 import javax.jms.Destination;
 import javax.jms.Queue;
 import javax.jms.Topic;
@@ -8,6 +10,7 @@ import com.kanq.deduce.web.service.PlayService;
 import com.kanq.deduce.web.socket.OneToManyWebSocket;
 import com.kanq.deduce.web.vo.ApiResult;
 import com.kanq.deduce.web.vo.PlayVO;
+import com.kanq.deduce.web.vo.PlanVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
@@ -57,13 +60,13 @@ public class CommandController {
         jmsMessageTemplate.convertAndSend(destination, message);
     }
 
-    @RequestMapping("/send")
+    @PostMapping("/send")
     public ApiResult sendQueue(){
         this.sendMessage(this.queue, "hello");
         return ApiResult.SUCCESS;
     }
 
-    @RequestMapping("/topic")
+    @PostMapping("/topic")
     public ApiResult sendTopic(){
         this.sendMessage(this.topic, "test");
         return ApiResult.SUCCESS;
@@ -71,9 +74,19 @@ public class CommandController {
 
     
 
-    @RequestMapping("/message")
+    @PostMapping("/message")
     public ApiResult send(){
       OneToManyWebSocket.sendAll("hellow");
+      return ApiResult.SUCCESS;
+    }
+
+    @PostMapping("/object")
+    public ApiResult sendObject(){
+      PlanVO planVO = new PlanVO();
+      planVO.setType(1);
+      planVO.setName("test");
+      planVO.setData(new Date());
+      OneToManyWebSocket.sendBodyTest(planVO);
       return ApiResult.SUCCESS;
     }
 
