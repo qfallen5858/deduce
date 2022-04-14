@@ -13,6 +13,7 @@ import javax.websocket.server.ServerEndpoint;
 
 import org.springframework.stereotype.Component;
 
+import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -80,7 +81,8 @@ public class OneToManyWebSocket {
       for(Map.Entry<String,Session> sessionEntry : clients.entrySet()){
         Session toSession = sessionEntry.getValue();
         // log.info("服务端给客户端[()]发送消息：{}", toSession.getId(), message);
-        toSession.getAsyncRemote().sendObject(object);
+        // toSession.getAsyncRemote().sendObject(object);
+        toSession.getAsyncRemote().sendText(JSONUtil.toJsonStr(object));
         // toSession.getAsyncRemote().sendObject(arg0));
       }
     }
